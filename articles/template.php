@@ -28,9 +28,6 @@
 						<p><?echo $arItem["PREVIEW_TEXT"];?></p>
 					<?endif;?>
 				</div>
-				<div class="button-wrap">
-					<a class="atuin-btn" href="<?=$arItem["DETAIL_PAGE_URL"]?>">Подробнее</a>
-				</div>
 			</div>
 		</article>
 	<?endforeach;?>
