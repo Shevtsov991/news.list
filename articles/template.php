@@ -5,34 +5,43 @@
 	<?=$arResult["NAV_STRING"]?><br />
 <?endif;?>
 
-<section class="grid">
-	<?foreach($arResult["ITEMS"] as $arItem):?>
-		<article class="grid-item">
-		<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
-			<div class="image">
-				<a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
-					<img class="preview_picture" src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" width="<?=$arItem["PREVIEW_PICTURE"]["WIDTH"]?>" height="<?=$arItem["PREVIEW_PICTURE"]["HEIGHT"]?>" alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>" title="<?=$arItem["NAME"]?>"  />
+	<div class="article-list">
+		<div id="barba-wrapper">
+			<?foreach($arResult["ITEMS"] as $arItem):?>
+				<a
+				class="article-item article-list__item"
+				href="<?=$arItem["DETAIL_PAGE_URL"]?>"
+				data-anim="anim-3"
+				>
+					<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arItem["PREVIEW_PICTURE"])):?>
+					<div class="article-item__background">
+						<img
+						src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?> "
+						data-src="xxxHTMLLINKxxx0.39186223192351520.41491856731872767xxx" 
+						alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
+						/>
+					</div>
+					<?endif?>
+					<div class="article-item__wrapper">
+						<?if($arParams["DISPLAY_NAME"]!="N" && $arItem["NAME"]):?>	
+						<div class="article-item__title"><?echo $arItem["NAME"]?></div>
+						<?endif;?>
+						<?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arItem["PREVIEW_TEXT"]):?>
+						<div class="article-item__content"><?echo $arItem["PREVIEW_TEXT"];?></div>
+						<?endif;?>
+					</div> 	
+					
 				</a>
-				</div>
-			<?endif?>
-			<div class="info">
-				<?if($arParams["DISPLAY_NAME"]!="N" && $arItem["NAME"]):?>
-					<?if(!$arParams["HIDE_LINK_WHEN_NO_DETAIL"] || ($arItem["DETAIL_TEXT"] && $arResult["USER_HAVE_ACCESS"])):?>
-						<a href="<?echo $arItem["DETAIL_PAGE_URL"]?>"><h2><?echo $arItem["NAME"]?></h2></a>
-					<?else:?>
-						<h2><?echo $arItem["NAME"]?></h2>
-					<?endif;?>
-				<?endif;?>
-				<div class="info-text">
-					<?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && $arItem["PREVIEW_TEXT"]):?>
-						<p><?echo $arItem["PREVIEW_TEXT"];?></p>
-					<?endif;?>
-				</div>
-			</div>
-		</article>
-	<?endforeach;?>
-</section>
+			<?endforeach;?>
+		</div>
+	</div>	
+
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
 	<br /><?=$arResult["NAV_STRING"]?>
 <?endif;?>
+
+
+
+
+
 
